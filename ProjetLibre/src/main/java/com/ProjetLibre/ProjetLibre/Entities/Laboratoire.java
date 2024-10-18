@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 public class Laboratoire {
     @Id
-    private String id;
+    private long id;
     private String nom;
     @Lob
     @Column(length = 100000)
