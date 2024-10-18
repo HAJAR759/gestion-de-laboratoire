@@ -1,4 +1,4 @@
-package Entities;
+package com.ProjetLibre.ProjetLibre.Entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
