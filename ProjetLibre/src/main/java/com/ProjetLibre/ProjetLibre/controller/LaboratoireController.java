@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
+import com.ProjetLibre.ProjetLibre.Services.LaboratoireService;
 import com.ProjetLibre.ProjetLibre.Services.LaboratoireServiceImp;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public class LaboratoireController {
 
     @Autowired
-    private LaboratoireServiceImp laboratoireService;
+    private LaboratoireService laboratoireService;
 
     // Récupérer tous les laboratoires
     @GetMapping("/all")
