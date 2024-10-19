@@ -1,21 +1,13 @@
 package com.ProjetLibre.ProjetLibre.controller;
 
-<<<<<<< HEAD
 import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
 import com.ProjetLibre.ProjetLibre.Services.LaboratoireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-=======
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
->>>>>>> cdf3174a947df4ba3b39a60e4eb4fc07214087d0
-
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
-import com.ProjetLibre.ProjetLibre.Services.LaboratoireServiceImp;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +23,6 @@ public class LaboratoireController {
         laboratoireService.ajouterLaboratoire(laboratoire);
     }
 
-    @Autowired
-    private LaboratoireServiceImp laboratoireService;
 
     // Récupérer tous les laboratoires
     @GetMapping("/all")
