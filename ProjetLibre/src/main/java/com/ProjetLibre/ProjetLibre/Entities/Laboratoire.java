@@ -1,18 +1,9 @@
 package com.ProjetLibre.ProjetLibre.Entities;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Setter
-@Getter
 public class Laboratoire {
     @Id
     private long id;
@@ -23,4 +14,89 @@ public class Laboratoire {
     private Long  nrc;
     private Statut statut;
     private Date dateActivation;
+    
+    
+	public Laboratoire() {
+		super();
+	}
+
+
+	public Laboratoire(long id, String nom, byte[] logo, Long nrc, Statut statut, Date dateActivation) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.logo = logo;
+		this.nrc = nrc;
+		this.statut = statut;
+		this.dateActivation = dateActivation;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public byte[] getLogo() {
+		return logo;
+	}
+
+
+	public void setLogo(byte[] logo) {
+		this.logo = logo;
+	}
+
+
+	public Long getNrc() {
+		return nrc;
+	}
+
+
+	public void setNrc(Long nrc) {
+		this.nrc = nrc;
+	}
+
+
+	public Statut getStatut() {
+		return statut;
+	}
+
+
+	public void setStatut(Statut statut) {
+		this.statut = statut;
+	}
+
+
+	public Date getDateActivation() {
+		return dateActivation;
+	}
+
+
+	public void setDateActivation(Date dateActivation) {
+		this.dateActivation = dateActivation;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Laboratoire [id=" + id + ", nom=" + nom + ", logo=" + Arrays.toString(logo) + ", nrc=" + nrc
+				+ ", statut=" + statut + ", dateActivation=" + dateActivation + "]";
+	}
+    
+    
 }
