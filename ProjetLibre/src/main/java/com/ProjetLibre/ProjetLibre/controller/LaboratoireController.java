@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
 import com.ProjetLibre.ProjetLibre.Services.LaboratoireService;
-import com.ProjetLibre.ProjetLibre.Services.LaboratoireServiceImp;
 
 import java.util.List;
 import java.util.Optional;
