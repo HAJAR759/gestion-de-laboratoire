@@ -4,6 +4,7 @@ import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
 import com.ProjetLibre.ProjetLibre.repository.LaboratoireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ProjetLibre.ProjetLibre.Exception.ResourceNotFoundException;
 
 @Service
 public class LaboratoireServiceImp implements LaboratoireService{
@@ -15,4 +16,20 @@ public class LaboratoireServiceImp implements LaboratoireService{
     public void ajouterLaboratoire(Laboratoire laboratoire) {
         laboratoireRepository.save(laboratoire);
     }
+
+    
+	@Override
+	public Laboratoire modifierLaboratoire(Long id, Laboratoire updatedLaboratoire) {
+	    return laboratoireRepository.findById(id)
+	        .map(laboratoire -> {
+	            laboratoire.setNom(updatedLaboratoire.getNom());
+	            laboratoire.setLogo(updatedLaboratoire.getLogo());
+	            laboratoire.setNrc(updatedLaboratoire.getNrc());
+	            laboratoire.setStatut(updatedLaboratoire.getStatut());
+	            laboratoire.setDateActivation(updatedLaboratoire.getDateActivation());
+	            return laboratoireRepository.save(laboratoire);
+	        }).orElseThrow(() -> new ResourceNotFoundException("Laboratoire introuvable avec l'id : " + id));
+	}
+
+    
 }

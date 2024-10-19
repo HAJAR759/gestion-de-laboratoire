@@ -4,4 +4,5 @@ import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
 
 public interface LaboratoireService {
     public void ajouterLaboratoire(Laboratoire laboratoire);
+	Laboratoire modifierLaboratoire(Long id, Laboratoire updatedLaboratoire);
 }
