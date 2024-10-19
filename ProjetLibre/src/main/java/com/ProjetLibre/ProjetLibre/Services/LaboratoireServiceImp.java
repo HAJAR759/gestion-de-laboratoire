@@ -35,12 +35,12 @@ public class LaboratoireServiceImp implements LaboratoireService{
 	        }).orElseThrow(() -> new ResourceNotFoundException("Laboratoire introuvable avec l'id : " + id));
 	}
 
-	// Récupérer tous les laboratoires
+	@Override
     public List<Laboratoire> getAllLaboratoires() {
         return laboratoireRepository.findAll();
     }
 
-    // Récupérer un laboratoire par ID
+	@Override
     public Optional<Laboratoire> getLaboratoireById(long id) {
         return laboratoireRepository.findById(id);
     }
