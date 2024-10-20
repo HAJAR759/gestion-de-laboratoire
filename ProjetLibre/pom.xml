@@ -78,11 +78,7 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>com.app</groupId>
-			<artifactId>Project-Together</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
