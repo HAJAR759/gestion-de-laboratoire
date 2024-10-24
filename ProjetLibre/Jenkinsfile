@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout Backend') {
             steps {
                 // Checkout backend from main
-                dir('./ProjetLibre') {
+                dir('./ProjetLibre/ProjetLibre') {
                     git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
         // Backend Build & Test stage
         stage('Build & Test Backend') {
             steps {
-                dir('./ProjetLibre') {
+                dir('./ProjetLibre/ProjetLibre') {
                     bat 'mvn clean install' // Utiliser 'sh' si sous Linux
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
         // Deploy using Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
-                dir('./ProjetLibre') { // Ajout de dir pour Docker Compose
+                dir('./') { // Ajout de dir pour Docker Compose
                     bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
                 }
             }
