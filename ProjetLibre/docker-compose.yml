@@ -15,7 +15,7 @@ services:
       - app-network
 
   frontend:
-    build: ./gestion-de-laboratoire
+    build: ../gestion-de-laboratoire
     ports:
       - "4200:80" # Port pour le frontend
     networks:
