@@ -50,7 +50,7 @@ pipeline {
         // Deploy using Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
-                dir('./') { // Ajout de dir pour Docker Compose
+                dir('./ProjetLibre/ProjetLibre') { // Ajout de dir pour Docker Compose
                     bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
                 }
             }
