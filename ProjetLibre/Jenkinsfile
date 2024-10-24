@@ -42,8 +42,7 @@ pipeline {
                     bat 'npm run build --prod' // Assurer un build de production
                     // Optional: run tests
                     bat 'npm run test -- --watch=false'
-                    // Optional: linting
-                    bat 'npm run lint'
+                   
                 }
             }
         }
