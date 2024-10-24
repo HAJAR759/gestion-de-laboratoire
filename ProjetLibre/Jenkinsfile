@@ -27,7 +27,7 @@ pipeline {
         stage('Build & Test Backend') {
             steps {
                 dir('./ProjetLibre') {
-                    bat 'mvn clean install -DskipTests' // Utiliser 'sh' si sous Linux
+                    bat 'mvn clean install' // Utiliser 'sh' si sous Linux
                 }
             }
         }
@@ -41,9 +41,9 @@ pipeline {
                     // Run Angular build
                     bat 'npm run build --prod' // Assurer un build de production
                     // Optional: run tests
-                    // bat 'npm run test -- --watch=false'
+                    bat 'npm run test -- --watch=false'
                     // Optional: linting
-                    // bat 'npm run lint'
+                    bat 'npm run lint'
                 }
             }
         }
