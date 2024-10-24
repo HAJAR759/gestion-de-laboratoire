@@ -1,20 +1,22 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven' // Use the name from Global Tool Configuration
+        maven 'maven' // Assure-toi que Maven est configuré dans Jenkins
     }
     stages {
         // Checkout stage
         stage('Checkout Backend') {
             steps {
                 // Checkout backend from main
-                git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+                dir('./ProjetLibre') {
+                    git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+                }
             }
         }
         
         stage('Checkout Frontend') {
             steps {
-                // Checkout frontend from main (ou master si la branche existe)
+                // Checkout frontend from main
                 dir('./ProjetLibreFrontend') {
                     git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
                 }
@@ -25,17 +27,17 @@ pipeline {
         stage('Build & Test Backend') {
             steps {
                 dir('./ProjetLibre') {
-                    bat 'mvn clean install -DskipTests' // Si sous Linux, remplacer 'bat' par 'sh'
+                    bat 'mvn clean install -DskipTests' // Utiliser 'sh' si sous Linux
                 }
             }
         }
 
-        // Frontend Build & Test stage (for Angular)
+        // Frontend Build & Test stage
         stage('Build & Test Frontend') {
             steps {
                 dir('./ProjetLibreFrontend') { 
                     // Install npm packages
-                    bat 'npm install' // Utiliser 'sh' si Linux
+                    bat 'npm install' // Utiliser 'sh' si sous Linux
                     // Run Angular build
                     bat 'npm run build --prod' // Assurer un build de production
                     // Optional: run tests
@@ -49,7 +51,9 @@ pipeline {
         // Deploy using Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
-                bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
+                dir('./ProjetLibre') { // Ajout de dir pour Docker Compose
+                    bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
+                }
             }
         }
     }
