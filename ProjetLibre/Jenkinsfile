@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Checkout frontend from main
                 dir('./ProjetLibreFrontend') {
-                    git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+                    git branch: 'master', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
                 }
             }
         }
