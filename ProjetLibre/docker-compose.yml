@@ -1,11 +1,8 @@
-
 services:
   backend:
-    build:
-      context: ./ # Dossier contenant le Dockerfile
-      dockerfile: Dockerfile
+    build: ./ProjetLibre
     ports:
-      - "8080:8080" # Map le port 8080 du conteneur au port 8080 de l'hôte
+      - "8080:8080" # Port pour le backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ProjetLibre
       SPRING_DATASOURCE_USERNAME: ProjetLibre
@@ -13,25 +10,40 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       db:
-        condition: service_healthy # Assure que le service db est démarré avant le backend
+        condition: service_healthy # Le backend attend que la DB soit prête
+    networks:
+      - app-network
+
+  frontend:
+    build: ./gestion-de-laboratoire
+    ports:
+      - "4200:80" # Port pour le frontend
+    networks:
+      - app-network
 
   db:
-    image: mysql:8.0 # Image officielle de MySQL
-    platform: linux/x86_64  # Ajout de cette ligne
+    image: mysql:8.0 # Image officielle MySQL
+    platform: linux/x86_64
     ports:
-      - "3306:3306" # Map le port 3306 du conteneur au port 3306 de l'hôte
+      - "3306:3306" # Port pour la base de données
     environment:
       MYSQL_ROOT_PASSWORD: ProjetLibre
       MYSQL_DATABASE: ProjetLibre
       MYSQL_USER: ProjetLibre
       MYSQL_PASSWORD: ProjetLibre
     volumes:
-      - db_data:/var/lib/mysql # Persistance des données dans un volume
+      - db_data:/var/lib/mysql # Persister les données MySQL dans un volume
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pProjetLibre"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app-network
 
 volumes:
-  db_data: # Volume pour la persistance des données MySQL
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

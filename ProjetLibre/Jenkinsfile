@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Frontend') {
             steps {
                 // Checkout frontend from main
-                dir('./ProjetLibreFrontend') {
+                dir('./gestion-de-laboratoire') {
                     git branch: 'master', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
         // Frontend Build & Test stage
         stage('Build & Test Frontend') {
             steps {
-                dir('./ProjetLibreFrontend') { 
+                dir('./gestion-de-laboratoire') { 
                     // Install npm packages
                     bat 'npm install' // Utiliser 'sh' si sous Linux
                     // Run Angular build
