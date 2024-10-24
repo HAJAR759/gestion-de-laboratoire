@@ -1,4 +1,3 @@
-
 services:
   backend:
     build:
@@ -6,12 +5,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080" # Map le port 8080 du conteneur au port 8080 de l'hôte
-    frontend:
-       build:
-         context: ./ # Dossier contenant le Dockerfile
-         dockerfile: Dockerfile
-       ports:
-      - "4200:4200"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ProjetLibre
       SPRING_DATASOURCE_USERNAME: ProjetLibre
@@ -21,9 +14,16 @@ services:
       db:
         condition: service_healthy # Assure que le service db est démarré avant le backend
 
+  frontend:
+    build:
+      context: ./ # Dossier contenant le Dockerfile du frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200" # Map le port 4200 du conteneur au port 4200 de l'hôte
+
   db:
     image: mysql:8.0 # Image officielle de MySQL
-    platform: linux/x86_64  # Ajout de cette ligne
+    platform: linux/x86_64  # Ajout de cette ligne pour les architectures spécifiques
     ports:
       - "3306:3306" # Map le port 3306 du conteneur au port 3306 de l'hôte
     environment:
