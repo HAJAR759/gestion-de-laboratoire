@@ -6,7 +6,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080" # Map le port 8080 du conteneur au port 8080 de l'hôte
-     
+    frontend:
+       build:
+         context: ./ # Dossier contenant le Dockerfile
+         dockerfile: Dockerfile
+       ports:
+      - "4200:4200"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ProjetLibre
       SPRING_DATASOURCE_USERNAME: ProjetLibre
