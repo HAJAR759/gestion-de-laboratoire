@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven' // Use the name from Global Tool Configuration
+    }
+    stages {
+        // Checkout stage
+        stage('Checkout Backend') {
+            steps {
+                // Checkout backend from main
+                git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+            }
+        }
+        
+        stage('Checkout Frontend') {
+            steps {
+                // Checkout frontend from main (ou master si la branche existe)
+                dir('./ProjetLibreFrontend') {
+                    git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+                }
+            }
+        }
+
+        // Backend Build & Test stage
+        stage('Build & Test Backend') {
+            steps {
+                dir('./ProjetLibre') {
+                    bat 'mvn clean install -DskipTests' // Si sous Linux, remplacer 'bat' par 'sh'
+                }
+            }
+        }
+
+        // Frontend Build & Test stage (for Angular)
+        stage('Build & Test Frontend') {
+            steps {
+                dir('./ProjetLibreFrontend') { 
+                    // Install npm packages
+                    bat 'npm install' // Utiliser 'sh' si Linux
+                    // Run Angular build
+                    bat 'npm run build --prod' // Assurer un build de production
+                    // Optional: run tests
+                    // bat 'npm run test -- --watch=false'
+                    // Optional: linting
+                    // bat 'npm run lint'
+                }
+            }
+        }
+
+        // Deploy using Docker Compose
+        stage('Deploy with Docker Compose') {
+            steps {
+                bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Le build, les tests et le déploiement ont réussi !'
+        }
+        failure {
+            echo 'Échec du build, des tests ou du déploiement.'
+        }
+    }
+}
