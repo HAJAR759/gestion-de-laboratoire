@@ -33,7 +33,7 @@ public class LaboratoireServiceImpTest {
         laboratoire.setNom("Laboratoire Test");
 
         // Appel de la méthode
-        laboratoryService.ajouterLaboratoire(laboratoire);
+        laboratoryService.addLaboratory(laboratoire);
 
         // Vérification
         verify(laboratoryRepository).save(laboratoire);

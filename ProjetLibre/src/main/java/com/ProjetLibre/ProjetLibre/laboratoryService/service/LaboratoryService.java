@@ -2,12 +2,21 @@ package com.ProjetLibre.ProjetLibre.laboratoryService.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
 
 public interface LaboratoryService {
-    public void ajouterLaboratoire(Laboratory laboratoire);
-	Laboratory modifierLaboratoire(Long id, Laboratory updatedLaboratoire);
-	public List<Laboratory> getAllLaboratories();
-	public Optional<Laboratory> getLaboratoireById(long id);
+    // Méthode pour ajouter un laboratoire
+    void addLaboratory(Laboratory laboratory);
+
+    // Méthode pour mettre à jour un laboratoire
+    Laboratory updateLaboratory(Long id, Laboratory updatedLaboratory);
+
+    // Méthode pour obtenir tous les laboratoires
+    List<Laboratory> getAllLaboratories();
+
+    // Méthode pour obtenir un laboratoire par son identifiant
+    Optional<Laboratory> getLaboratoryById(long id);
+
+    // Méthode pour supprimer un laboratoire
+    void deleteLaboratory(Long id);
 }

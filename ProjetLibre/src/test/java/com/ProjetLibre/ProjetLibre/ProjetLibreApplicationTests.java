@@ -64,7 +64,7 @@ class ProjetLibreApplicationTests {
         when(repository.findById(1L)).thenReturn(Optional.of(lab));
 
         // Appeler la méthode du service
-        Optional<Laboratory> laboratoire = service.getLaboratoireById(1L);
+        Optional<Laboratory> laboratoire = service.getLaboratoryById(1L);
 
         // Vérifier que le laboratoire est récupéré correctement
         assertEquals(true, laboratoire.isPresent());
@@ -78,7 +78,7 @@ class ProjetLibreApplicationTests {
         lab.setId(3);
         lab.setNom("Laboratoire C");
 
-        service.ajouterLaboratoire(lab);
+        service.addLaboratory(lab);
 
         verify(repository, times(1)).save(lab);  // Vérifie que la méthode save a été appelée une fois
     }

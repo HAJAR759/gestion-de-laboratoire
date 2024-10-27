@@ -1,15 +1,14 @@
 package com.ProjetLibre.ProjetLibre.laboratoryService.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
-import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,36 +20,47 @@ public class LaboratoryController {
     @Autowired
     private LaboratoryService laboratoryService;
 
-    
+    // Récupérer tous les laboratoires
     @GetMapping("/all")
-    public List<Laboratory> getAllLaboratories() {
-        return laboratoryService.getAllLaboratories();
+    public ResponseEntity<List<Laboratory>> getAllLaboratories() {
+        List<Laboratory> laboratories = laboratoryService.getAllLaboratories();
+        return ResponseEntity.ok(laboratories);
     }
 
-    
+    // Récupérer un laboratoire par ID
     @GetMapping("/{id}")
-    public ResponseEntity<Laboratory> getLaboratoireById(@PathVariable long id) {
-        Optional<Laboratory> laboratoire = laboratoryService.getLaboratoireById(id);
+    public ResponseEntity<Laboratory> getLaboratoireById(@PathVariable Long id) {
+        Optional<Laboratory> laboratoire = laboratoryService.getLaboratoryById(id);
         return laboratoire.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                          .orElseGet(() -> ResponseEntity.notFound().build());
     }
-    
+
+    // Ajouter un nouveau laboratoire
     @PostMapping("/ajouterLaboratoire")
-    public void ajouPrestataire(@RequestBody Laboratory laboratory) {
-        laboratoryService.ajouterLaboratoire(laboratory);
+    public ResponseEntity<Laboratory> addLaboratory(@RequestBody Laboratory laboratory) {
+        laboratoryService.addLaboratory(laboratory);
+        return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
     }
 
+    // Mettre à jour un laboratoire existant
     @PutMapping("/modifierLabo/{id}")
-    public ResponseEntity<Laboratory> modifierLaboratoire(@PathVariable Long id, @RequestBody Laboratory updatedLaboratoire) {
-        Optional<Laboratory> existingLaboratoire = laboratoryService.getLaboratoireById(id);
-
-        if (existingLaboratoire.isPresent()) {
-        	Laboratory modifiedLaboratoire = laboratoryService.modifierLaboratoire(id, updatedLaboratoire);
-            return new ResponseEntity<>(modifiedLaboratoire, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Laboratory> updateLaboratory(@PathVariable Long id, @RequestBody Laboratory updatedLaboratory) {
+        try {
+            Laboratory updatedLab = laboratoryService.updateLaboratory(id, updatedLaboratory);
+            return ResponseEntity.ok(updatedLab);
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-    
-}
 
+    // Supprimer un laboratoire
+    @DeleteMapping("/supprimerLabo/{id}")
+    public ResponseEntity<Void> deleteLaboratory(@PathVariable Long id) {
+        try {
+            laboratoryService.deleteLaboratory(id);
+            return ResponseEntity.noContent().build();
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}

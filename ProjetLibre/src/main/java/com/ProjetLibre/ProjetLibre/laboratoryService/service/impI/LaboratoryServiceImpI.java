@@ -5,44 +5,58 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
+
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
 import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoryRepository;
 import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
 
 @Service
-public class LaboratoryServiceImpI implements LaboratoryService{
+public class LaboratoryServiceImpI implements LaboratoryService {
 
     @Autowired
-    LaboratoryRepository laboratoryRepository;
+    private LaboratoryRepository laboratoryRepository;
 
     @Override
-    public void ajouterLaboratoire(Laboratory laboratoire) {
-        laboratoryRepository.save(laboratoire);
+    public void addLaboratory(Laboratory laboratory) {
+        laboratoryRepository.save(laboratory);
     }
 
-    
-	@Override
-	public Laboratory modifierLaboratoire(Long id, Laboratory updatedLaboratory) {
-	    return laboratoryRepository.findById(id)
-	        .map(laboratory -> {
-	            laboratory.setNom(updatedLaboratory.getNom());
-	            laboratory.setLogo(updatedLaboratory.getLogo());
-	            laboratory.setNrc(updatedLaboratory.getNrc());
-	            laboratory.setStatut(updatedLaboratory.getStatut());
-	            laboratory.setDateActivation(updatedLaboratory.getDateActivation());
-	            return laboratoryRepository.save(laboratory);
-	        }).orElseThrow(() -> new ResourceNotFoundException("Laboratoire introuvable avec l'id : " + id));
-	}
+    @Override
+    public Laboratory updateLaboratory(Long id, Laboratory updatedLaboratory) {
+        Laboratory existingLaboratory = getLaboratoryByIdOrThrow(id);
+        updateLaboratoryFields(existingLaboratory, updatedLaboratory);
+        return laboratoryRepository.save(existingLaboratory);
+    }
 
-	@Override
+    @Override
     public List<Laboratory> getAllLaboratories() {
         return laboratoryRepository.findAll();
     }
 
-	@Override
-    public Optional<Laboratory> getLaboratoireById(long id) {
+    @Override
+    public Optional<Laboratory> getLaboratoryById(long id) {
         return laboratoryRepository.findById(id);
     }
-    
+
+    @Override
+    public void deleteLaboratory(Long id) {
+        Laboratory laboratory = getLaboratoryByIdOrThrow(id);
+        laboratoryRepository.delete(laboratory);
+    }
+
+    // Méthode privée pour obtenir un laboratoire par ID ou lancer une exception
+    private Laboratory getLaboratoryByIdOrThrow(Long id) {
+        return laboratoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Laboratoire introuvable avec l'id : " + id));
+    }
+
+    // Méthode privée pour mettre à jour les champs d'un laboratoire existant
+    private void updateLaboratoryFields(Laboratory existingLaboratory, Laboratory updatedLaboratory) {
+        existingLaboratory.setNom(updatedLaboratory.getNom());
+        existingLaboratory.setLogo(updatedLaboratory.getLogo());
+        existingLaboratory.setNrc(updatedLaboratory.getNrc());
+        existingLaboratory.setStatut(updatedLaboratory.getStatut());
+        existingLaboratory.setDateActivation(updatedLaboratory.getDateActivation());
+    }
 }
