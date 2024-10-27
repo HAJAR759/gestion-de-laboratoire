@@ -1,14 +1,13 @@
-package com.ProjetLibre.ProjetLibre.Services;
-
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
-import com.ProjetLibre.ProjetLibre.repository.LaboratoireRepository;
+package com.ProjetLibre.ProjetLibre.laboratoryService.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ProjetLibre.ProjetLibre.Exception.ResourceNotFoundException;
+import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
+import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoireRepository;
 
 @Service
 public class LaboratoireServiceImp implements LaboratoireService{

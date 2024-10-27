@@ -14,9 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
-import com.ProjetLibre.ProjetLibre.Services.LaboratoireService;
-import com.ProjetLibre.ProjetLibre.repository.LaboratoireRepository;
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
+import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoireRepository;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireService;
+
 
 @SpringBootTest
 

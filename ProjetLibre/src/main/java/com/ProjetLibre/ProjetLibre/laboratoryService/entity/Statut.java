@@ -1,4 +1,4 @@
-package com.ProjetLibre.ProjetLibre.Entities;
+package com.ProjetLibre.ProjetLibre.laboratoryService.entity;
 
 public enum Statut {
     ACTIF,

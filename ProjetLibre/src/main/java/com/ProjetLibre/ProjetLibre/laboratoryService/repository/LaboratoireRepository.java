@@ -1,7 +1,8 @@
-package com.ProjetLibre.ProjetLibre.repository;
+package com.ProjetLibre.ProjetLibre.laboratoryService.repository;
 
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
 
 public interface LaboratoireRepository extends JpaRepository<Laboratoire, Long> {
 

@@ -1,9 +1,9 @@
-package com.ProjetLibre.ProjetLibre.Services;
+package com.ProjetLibre.ProjetLibre.laboratoryService.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
 
 public interface LaboratoireService {
     public void ajouterLaboratoire(Laboratoire laboratoire);

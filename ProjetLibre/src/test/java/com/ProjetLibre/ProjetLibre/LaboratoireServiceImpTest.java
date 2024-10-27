@@ -1,14 +1,15 @@
 
 package com.ProjetLibre.ProjetLibre;
 
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
-import com.ProjetLibre.ProjetLibre.Services.LaboratoireServiceImp;
-import com.ProjetLibre.ProjetLibre.repository.LaboratoireRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
+import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoireRepository;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireServiceImp;
 
 import static org.mockito.Mockito.verify;
 

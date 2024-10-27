@@ -1,10 +1,12 @@
-package com.ProjetLibre.ProjetLibre.controller;
-import com.ProjetLibre.ProjetLibre.Entities.Laboratoire;
-import com.ProjetLibre.ProjetLibre.Services.LaboratoireService;
+package com.ProjetLibre.ProjetLibre.laboratoryService.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
