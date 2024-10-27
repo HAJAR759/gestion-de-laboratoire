@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 @Entity
-public class Laboratoire {
+public class Laboratory {
     @Id
     private long id;
     private String nom;
@@ -16,12 +16,12 @@ public class Laboratoire {
     private Date dateActivation;
     
     
-	public Laboratoire() {
+	public Laboratory() {
 		super();
 	}
 
 
-	public Laboratoire(long id, String nom, byte[] logo, Long nrc, Statut statut, Date dateActivation) {
+	public Laboratory(long id, String nom, byte[] logo, Long nrc, Statut statut, Date dateActivation) {
 		super();
 		this.id = id;
 		this.nom = nom;

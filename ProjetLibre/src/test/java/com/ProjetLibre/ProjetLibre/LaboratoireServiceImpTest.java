@@ -7,19 +7,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
-import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoireRepository;
-import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireServiceImp;
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoryRepository;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.impI.LaboratoryServiceImpI;
 
 import static org.mockito.Mockito.verify;
 
 public class LaboratoireServiceImpTest {
 
     @Mock
-    private LaboratoireRepository laboratoireRepository;
+    private LaboratoryRepository laboratoryRepository;
 
     @InjectMocks
-    private LaboratoireServiceImp laboratoireService;
+    private LaboratoryServiceImpI laboratoryService;
 
     @BeforeEach
     public void setUp() {
@@ -29,13 +29,13 @@ public class LaboratoireServiceImpTest {
     @Test
     public void testAjouterLaboratoire() {
         // Données d'entrée
-        Laboratoire laboratoire = new Laboratoire();
+        Laboratory laboratoire = new Laboratory();
         laboratoire.setNom("Laboratoire Test");
 
         // Appel de la méthode
-        laboratoireService.ajouterLaboratoire(laboratoire);
+        laboratoryService.ajouterLaboratoire(laboratoire);
 
         // Vérification
-        verify(laboratoireRepository).save(laboratoire);
+        verify(laboratoryRepository).save(laboratoire);
     }
 }

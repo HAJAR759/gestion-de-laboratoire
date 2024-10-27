@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratoire;
-import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoireRepository;
-import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireService;
+import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoryRepository;
+import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
 
 
 @SpringBootTest
@@ -24,20 +24,20 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoireService;
 class ProjetLibreApplicationTests {
 
     @Autowired
-    private LaboratoireService service;
+    private LaboratoryService service;
 
     @MockBean
-    private LaboratoireRepository repository;
+    private LaboratoryRepository repository;
 
     // Test unitaire pour la méthode getAllLaboratoires
     @Test
-    void testGetAllLaboratoires() {
+    void testGetAllLaboratories() {
         // Créer des laboratoires fictifs:
-        Laboratoire lab1 = new Laboratoire();
+        Laboratory lab1 = new Laboratory();
         lab1.setId(1);
         lab1.setNom("Laboratoire A");
         
-        Laboratoire lab2 = new Laboratoire();
+        Laboratory lab2 = new Laboratory();
         lab2.setId(2);
         lab2.setNom("Laboratoire B");
 
@@ -45,7 +45,7 @@ class ProjetLibreApplicationTests {
         when(repository.findAll()).thenReturn(Arrays.asList(lab1, lab2));
 
         // Appeler la méthode du service
-        List<Laboratoire> laboratoires = service.getAllLaboratoires();
+        List<Laboratory> laboratoires = service.getAllLaboratories();
 
         // Vérifier que le résultat est correct
         assertEquals(2, laboratoires.size());
@@ -56,7 +56,7 @@ class ProjetLibreApplicationTests {
     // Test unitaire pour la méthode getLaboratoireById
     @Test
     void testGetLaboratoireById() {
-        Laboratoire lab = new Laboratoire();
+    	Laboratory lab = new Laboratory();
         lab.setId(1);
         lab.setNom("Laboratoire A");
 
@@ -64,7 +64,7 @@ class ProjetLibreApplicationTests {
         when(repository.findById(1L)).thenReturn(Optional.of(lab));
 
         // Appeler la méthode du service
-        Optional<Laboratoire> laboratoire = service.getLaboratoireById(1L);
+        Optional<Laboratory> laboratoire = service.getLaboratoireById(1L);
 
         // Vérifier que le laboratoire est récupéré correctement
         assertEquals(true, laboratoire.isPresent());
@@ -74,7 +74,7 @@ class ProjetLibreApplicationTests {
  // Test unitaire pour la méthode AjouterLaboratoire()
     @Test
     void testAjouterLaboratoire() {
-        Laboratoire lab = new Laboratoire();
+    	Laboratory lab = new Laboratory();
         lab.setId(3);
         lab.setNom("Laboratoire C");
 
