@@ -21,7 +21,7 @@ public class LaboratoryServiceImpI implements LaboratoryService {
     @Override
     public Laboratory addLaboratory(LaboratoryDTO laboratoryDTO) {
         // Convertir le DTO en entité et l'ajouter à la base de données
-        Laboratory laboratory = mapper.toEntity(laboratoryDTO);
+        Laboratory laboratory = Mapper.toEntity(laboratoryDTO);
         return laboratoryRepository.save(laboratory);
     }
 
