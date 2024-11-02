@@ -94,7 +94,7 @@ public class Laboratory {
 
 	@Override
 	public String toString() {
-		return "Laboratoire [id=" + id + ", nom=" + nom + ", logo=" + Arrays.toString(logo) + ", nrc=" + nrc
+		return "Laboratory [id=" + id + ", nom=" + nom + ", logo=" + Arrays.toString(logo) + ", nrc=" + nrc
 				+ ", statut=" + statut + ", dateActivation=" + dateActivation + "]";
 	}
     

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
-import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
 import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
 
 import java.util.List;
@@ -49,7 +48,7 @@ public class LaboratoryController {
         try {
             Laboratory updatedLab = laboratoryService.updateLaboratory(id, updatedLaboratoryDTO);
             return ResponseEntity.ok(updatedLab);
-        } catch (ResourceNotFoundException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
@@ -60,7 +59,7 @@ public class LaboratoryController {
         try {
             laboratoryService.deleteLaboratory(id);
             return ResponseEntity.noContent().build();
-        } catch (ResourceNotFoundException e) {
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
