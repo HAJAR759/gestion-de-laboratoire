@@ -15,7 +15,6 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 @Service
 public class LaboratoryServiceImpI implements LaboratoryService {
 
-    @Autowired
     private LaboratoryRepository laboratoryRepository;
 
     @Override

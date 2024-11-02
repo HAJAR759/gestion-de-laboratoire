@@ -7,7 +7,6 @@ public class Mapper {
 	
 	public Mapper() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	// Méthode pour convertir l'entité Laboratory en LaboratoryDTO
