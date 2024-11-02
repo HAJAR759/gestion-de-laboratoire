@@ -4,6 +4,8 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
 
 public class Mapper {
+	privte  Mapper(){
+	}
 	// Méthode pour convertir l'entité Laboratory en LaboratoryDTO
     public static LaboratoryDTO toDTO(Laboratory laboratory) {
         if (laboratory == null) {
