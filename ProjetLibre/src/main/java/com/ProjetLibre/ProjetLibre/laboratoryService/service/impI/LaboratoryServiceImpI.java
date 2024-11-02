@@ -18,8 +18,6 @@ public class LaboratoryServiceImpI implements LaboratoryService {
     @Autowired
     private LaboratoryRepository laboratoryRepository;
 
-    private final Mapper mapper = new Mapper();
-
     @Override
     public Laboratory addLaboratory(LaboratoryDTO laboratoryDTO) {
         // Convertir le DTO en entité et l'ajouter à la base de données
