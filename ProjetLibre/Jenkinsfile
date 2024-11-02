@@ -55,6 +55,21 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+            environment {
+                SONARQUBE_TOKEN = credentials('projet-libre-sonar-token') // Remplacez par votre ID d'identifiant
+            }
+            steps {
+                script {
+                    // Exécutez l'analyse SonarQube
+                    bat "mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=sonar-jenkins \
+  -Dsonar.projectName='sonar-jenkins' \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.token=sqp_7c5981354f7f7f1701fbcff0fbe3df12d4747104"
+                }
+            }
+        }
     }
 
     post {
