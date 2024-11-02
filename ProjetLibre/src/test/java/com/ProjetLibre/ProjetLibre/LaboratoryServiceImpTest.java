@@ -21,7 +21,7 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoryReposi
 import com.ProjetLibre.ProjetLibre.laboratoryService.service.impI.LaboratoryServiceImpI;
 import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 
-public class LaboratoryServiceImpTest {
+ class LaboratoryServiceImpTest {
 
     @Mock
     private LaboratoryRepository laboratoryRepository;
@@ -38,7 +38,7 @@ public class LaboratoryServiceImpTest {
     }
 
     @Test
-    public void testAjouterLaboratoire() {
+     void testAjouterLaboratoire() {
         LaboratoryDTO laboratoryDTO = new LaboratoryDTO();
         laboratoryDTO.setNom("Laboratoire A");
         laboratoryDTO.setNrc(123456L);
@@ -58,7 +58,7 @@ public class LaboratoryServiceImpTest {
     }
 
     @Test
-    public void testModifierLaboratoire() {
+     void testModifierLaboratoire() {
         Long labId = 1L;
         Laboratory existingLaboratory = new Laboratory();
         existingLaboratory.setId(labId);
@@ -81,7 +81,7 @@ public class LaboratoryServiceImpTest {
     }
 
     @Test
-    public void testObtenirTousLesLaboratoires() {
+     void testObtenirTousLesLaboratoires() {
         Laboratory lab1 = new Laboratory();
         lab1.setNom("Laboratoire 1");
         Laboratory lab2 = new Laboratory();
@@ -96,7 +96,7 @@ public class LaboratoryServiceImpTest {
     }
 
     @Test
-    public void testObtenirLaboratoireParId() {
+     void testObtenirLaboratoireParId() {
         Long labId = 1L;
         Laboratory laboratory = new Laboratory();
         laboratory.setId(labId);
@@ -111,7 +111,7 @@ public class LaboratoryServiceImpTest {
     }
 
     @Test
-    public void testSupprimerLaboratoire() {
+     void testSupprimerLaboratoire() {
         Long labId = 1L;
 
         laboratoryService.deleteLaboratory(labId);
