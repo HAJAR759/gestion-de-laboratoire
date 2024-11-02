@@ -2,14 +2,16 @@ package com.ProjetLibre.ProjetLibre.laboratoryService.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
 
 public interface LaboratoryService {
     // Méthode pour ajouter un laboratoire
-    void addLaboratory(Laboratory laboratory);
+	Laboratory addLaboratory(LaboratoryDTO laboratoryDTO);
 
     // Méthode pour mettre à jour un laboratoire
-    Laboratory updateLaboratory(Long id, Laboratory updatedLaboratory);
+    Laboratory updateLaboratory(Long id, LaboratoryDTO laboratoryDTO);
 
     // Méthode pour obtenir tous les laboratoires
     List<Laboratory> getAllLaboratories();

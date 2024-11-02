@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
 import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
 import com.ProjetLibre.ProjetLibre.laboratoryService.exception.ResourceNotFoundException;
 import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
@@ -35,18 +36,18 @@ public class LaboratoryController {
                           .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Ajouter un nouveau laboratoire
+ // Ajouter un nouveau laboratoire
     @PostMapping("/ajouterLaboratoire")
-    public ResponseEntity<Laboratory> addLaboratory(@RequestBody Laboratory laboratory) {
-        laboratoryService.addLaboratory(laboratory);
+    public ResponseEntity<Laboratory> addLaboratory(@RequestBody LaboratoryDTO laboratoryDTO) {
+        Laboratory laboratory = laboratoryService.addLaboratory(laboratoryDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
     }
 
     // Mettre à jour un laboratoire existant
     @PutMapping("/modifierLabo/{id}")
-    public ResponseEntity<Laboratory> updateLaboratory(@PathVariable Long id, @RequestBody Laboratory updatedLaboratory) {
+    public ResponseEntity<Laboratory> updateLaboratory(@PathVariable Long id, @RequestBody LaboratoryDTO updatedLaboratoryDTO) {
         try {
-            Laboratory updatedLab = laboratoryService.updateLaboratory(id, updatedLaboratory);
+            Laboratory updatedLab = laboratoryService.updateLaboratory(id, updatedLaboratoryDTO);
             return ResponseEntity.ok(updatedLab);
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
