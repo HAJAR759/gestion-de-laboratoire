@@ -61,13 +61,15 @@ pipeline {
             }
             steps {
                 script {
+                    // Change directory to where the pom.xml is located
+            dir('./ProjetLibre') {
                     // Exécutez l'analyse SonarQube
                     bat "mvn clean verify sonar:sonar \
   -Dsonar.projectKey=sonar-jenkins \
   -Dsonar.projectName='sonar-jenkins' \
   -Dsonar.host.url=http://localhost:9000 \
   -Dsonar.token=sqp_9c709765ba350ac52eb67bfb2cd54159bb418d12"
-                }
+                }}
             }
         }
     }
