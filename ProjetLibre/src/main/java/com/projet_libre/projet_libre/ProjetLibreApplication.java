@@ -1,4 +1,4 @@
-package com.ProjetLibre.ProjetLibre;
+package com.projet_libre.projet_libre;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

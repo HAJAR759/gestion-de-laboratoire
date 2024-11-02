@@ -1,4 +1,4 @@
-package com.ProjetLibre.ProjetLibre.laboratoryService.entity;
+package com.projet_libre.projet_libre.laboratory_service.entity;
 import jakarta.persistence.*;
 import java.util.Arrays;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.ProjetLibre.ProjetLibre;
+package com.projet_libre.projet_libre;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -14,12 +14,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Statut;
-import com.ProjetLibre.ProjetLibre.laboratoryService.mapper.Mapper;
-import com.ProjetLibre.ProjetLibre.laboratoryService.repository.LaboratoryRepository;
-import com.ProjetLibre.ProjetLibre.laboratoryService.service.impI.LaboratoryServiceImpI;
-import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
+import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
+import com.projet_libre.projet_libre.laboratory_service.mapper.Mapper;
+import com.projet_libre.projet_libre.laboratory_service.repository.LaboratoryRepository;
+import com.projet_libre.projet_libre.laboratory_service.service.impI.LaboratoryServiceImpI;
+import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
 
  class LaboratoryServiceImpTest {
 
@@ -29,12 +29,9 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
     @InjectMocks
     private LaboratoryServiceImpI laboratoryService;
 
-    private Mapper mapper;
-
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        mapper = new Mapper(); // Ou instanciez votre mapper comme nécessaire
     }
 
     @Test
@@ -45,7 +42,7 @@ import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
         laboratoryDTO.setStatut(Statut.ACTIF); // Supposons que Statut est une énumération
         laboratoryDTO.setDateActivation(new Date());
 
-        Laboratory laboratory = mapper.toEntity(laboratoryDTO);
+        Laboratory laboratory = Mapper.toEntity(laboratoryDTO);
         
         when(laboratoryRepository.save(any(Laboratory.class))).thenReturn(laboratory);
 

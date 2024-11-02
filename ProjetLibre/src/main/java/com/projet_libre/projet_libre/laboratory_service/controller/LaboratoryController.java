@@ -1,13 +1,13 @@
-package com.ProjetLibre.ProjetLibre.laboratoryService.controller;
+package com.projet_libre.projet_libre.laboratory_service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
-import com.ProjetLibre.ProjetLibre.laboratoryService.service.LaboratoryService;
+import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
+import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.service.LaboratoryService;
 
 import java.util.List;
 import java.util.Optional;

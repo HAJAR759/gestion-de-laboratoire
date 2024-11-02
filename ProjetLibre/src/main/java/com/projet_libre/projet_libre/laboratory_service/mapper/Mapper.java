@@ -1,11 +1,11 @@
-package com.ProjetLibre.ProjetLibre.laboratoryService.mapper;
+package com.projet_libre.projet_libre.laboratory_service.mapper;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
+import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
 
 public class Mapper {
 	
-	public Mapper() {
+	private Mapper() {
 		super();
 	}
 

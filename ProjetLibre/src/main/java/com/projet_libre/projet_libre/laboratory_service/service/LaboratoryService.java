@@ -1,10 +1,10 @@
-package com.ProjetLibre.ProjetLibre.laboratoryService.service;
+package com.projet_libre.projet_libre.laboratory_service.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.dto.LaboratoryDTO;
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
+import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
 
 public interface LaboratoryService {
     // Méthode pour ajouter un laboratoire

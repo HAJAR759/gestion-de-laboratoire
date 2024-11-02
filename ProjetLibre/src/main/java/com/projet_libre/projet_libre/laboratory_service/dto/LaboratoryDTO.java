@@ -1,6 +1,6 @@
-package com.ProjetLibre.ProjetLibre.laboratoryService.dto;
+package com.projet_libre.projet_libre.laboratory_service.dto;
 
-import com.ProjetLibre.ProjetLibre.laboratoryService.entity.Statut;
+import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
 import java.util.Date;
 
 public class LaboratoryDTO {
