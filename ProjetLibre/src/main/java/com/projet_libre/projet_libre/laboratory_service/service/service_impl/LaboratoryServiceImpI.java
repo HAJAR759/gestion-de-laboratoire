@@ -1,4 +1,4 @@
-package com.projet_libre.projet_libre.laboratory_service.service.impI;
+package com.projet_libre.projet_libre.laboratory_service.service.service_impl;
 
 import java.util.List;
 import java.util.Optional;
