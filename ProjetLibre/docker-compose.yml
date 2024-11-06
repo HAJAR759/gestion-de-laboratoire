@@ -1,6 +1,6 @@
 services:
   backend:
-    build: ./projet_libre
+    build: ./ProjetLibre
     ports:
       - "8080:8080" # Port pour le backend
     environment:

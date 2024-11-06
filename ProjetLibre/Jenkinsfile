@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout Backend') {
             steps {
                 // Checkout backend from main
-                dir('./projet_libre') {
+                dir('./ProjetLibre') {
                     git branch: 'main', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
         // Backend Build & Test stage
         stage('Build & Test Backend') {
             steps {
-                dir('./projet_libre') {
+                dir('./ProjetLibre') {
                     bat 'mvn clean install' // Utiliser 'sh' si sous Linux
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
         // Deploy using Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
-                dir('./projet_libre') { // Ajout de dir pour Docker Compose
+                dir('./ProjetLibre') { // Ajout de dir pour Docker Compose
                     bat 'docker-compose -f docker-compose.yml up --build -d' // Utiliser 'sh' si sous Linux
                 }
             }
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     // Change directory to where the pom.xml is located
-            dir('./projet_libre') {
+            dir('./ProjetLibre') {
                     // Exécutez l'analyse SonarQube
                     bat "mvn clean verify sonar:sonar \
   -Dsonar.projectKey=sonar-jenkins \
