@@ -17,9 +17,12 @@ import java.util.Optional;
 @RequestMapping("/api/laboratoires")
 public class LaboratoryController {
 
-    @Autowired
     private LaboratoryService laboratoryService;
 
+    public LaboratoryController(LaboratoryService laboratoryService) {
+        this.laboratoryService = laboratoryService;
+    }
+    
     // Récupérer tous les laboratoires
     @GetMapping("/all")
     public ResponseEntity<List<Laboratory>> getAllLaboratories() {
