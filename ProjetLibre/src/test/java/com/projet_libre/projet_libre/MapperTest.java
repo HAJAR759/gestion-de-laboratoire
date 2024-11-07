@@ -18,20 +18,22 @@ class MapperTest {
     private Laboratory laboratory;
     private LaboratoryDTO laboratoryDTO;
 
-    @BeforeEach
-    public void setUp() {
+    public void setUp() throws ParseException {
+        // Définit une date fixe pour éviter les différences de millisecondes
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date fixedDate = dateFormat.parse("2024-01-01");
+
         // Initialisation d'une entité Laboratory et d'un DTO LaboratoryDTO pour les tests
-        laboratory = new Laboratory(1L, "Laboratoire ABC", new byte[]{1, 2, 3}, 123456L, Statut.ACTIF, new Date());
-        
+        laboratory = new Laboratory(1L, "Laboratoire ABC", new byte[]{1, 2, 3}, 123456L, Statut.ACTIF, fixedDate);
+
         laboratoryDTO = new LaboratoryDTO();
         laboratoryDTO.setId(1L);
         laboratoryDTO.setNom("Laboratoire ABC");
         laboratoryDTO.setLogo(new byte[]{1, 2, 3});
         laboratoryDTO.setNrc(123456L);
         laboratoryDTO.setStatut(Statut.ACTIF);
-        laboratoryDTO.setDateActivation(new Date());
+        laboratoryDTO.setDateActivation(fixedDate);
     }
-
     @Test
     void testToDTO() {
         LaboratoryDTO dto = Mapper.toDTO(laboratory);
