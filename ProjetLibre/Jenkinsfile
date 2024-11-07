@@ -38,9 +38,9 @@ pipeline {
                 dir('./gestion-de-laboratoire') { 
                     // Install npm packages
                     bat 'npm install' // Utiliser 'sh' si sous Linux
-                    // Run Angular build
-                    bat 'npm run build --prod' // Assurer un build de production
-                    // Optional: run tests
+                    // Run Angular build with increased memory
+                    bat 'node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod'
+                   // Optional: run tests
                     bat 'npm run test -- --watch=false'
                    
                 }
