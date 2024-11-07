@@ -39,7 +39,7 @@ pipeline {
                     // Install npm packages
                     bat 'npm install' // Utiliser 'sh' si sous Linux
                     // Run Angular build with increased memory
-                    bat 'node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --configuration production'
+                    bat 'node --max_old_space_size=8192 node_modules/.bin/ng build --configuration production'
                     // Optional: run tests
                     bat 'npm run test -- --watch=false'
                    
