@@ -1,0 +1,74 @@
+package com.projet_libre.projet_libre;
+
+
+import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
+import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
+import com.projet_libre.projet_libre.laboratory_service.mapper.Mapper;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MapperTest {
+
+    private Laboratory laboratory;
+    private LaboratoryDTO laboratoryDTO;
+
+    @BeforeEach
+    void setUp() {
+        // Initialisation d'une entité Laboratory et d'un DTO LaboratoryDTO pour les tests
+        laboratory = new Laboratory(1L, "Laboratoire ABC", new byte[]{1, 2, 3}, 123456L, Statut.ACTIF, new Date());
+        
+        laboratoryDTO = new LaboratoryDTO();
+        laboratoryDTO.setId(1L);
+        laboratoryDTO.setNom("Laboratoire ABC");
+        laboratoryDTO.setLogo(new byte[]{1, 2, 3});
+        laboratoryDTO.setNrc(123456L);
+        laboratoryDTO.setStatut(Statut.ACTIF);
+        laboratoryDTO.setDateActivation(new Date());
+    }
+
+    @Test
+    void testToDTO() {
+        LaboratoryDTO dto = Mapper.toDTO(laboratory);
+
+        assertNotNull(dto);
+        assertEquals(laboratory.getId(), dto.getId());
+        assertEquals(laboratory.getNom(), dto.getNom());
+        assertArrayEquals(laboratory.getLogo(), dto.getLogo());
+        assertEquals(laboratory.getNrc(), dto.getNrc());
+        assertEquals(laboratory.getStatut(), dto.getStatut());
+        assertEquals(laboratory.getDateActivation(), dto.getDateActivation());
+    }
+
+    @Test
+    void testToDTO_NullLaboratory() {
+        LaboratoryDTO dto = Mapper.toDTO(null);
+
+        assertNull(dto, "La conversion d'un Laboratory null devrait retourner un DTO null");
+    }
+
+    @Test
+    void testToEntity() {
+        Laboratory entity = Mapper.toEntity(laboratoryDTO);
+
+        assertNotNull(entity);
+        assertEquals(laboratoryDTO.getId(), entity.getId());
+        assertEquals(laboratoryDTO.getNom(), entity.getNom());
+        assertArrayEquals(laboratoryDTO.getLogo(), entity.getLogo());
+        assertEquals(laboratoryDTO.getNrc(), entity.getNrc());
+        assertEquals(laboratoryDTO.getStatut(), entity.getStatut());
+        assertEquals(laboratoryDTO.getDateActivation(), entity.getDateActivation());
+    }
+
+    @Test
+    void testToEntity_NullLaboratoryDTO() {
+        Laboratory entity = Mapper.toEntity(null);
+
+        assertNull(entity, "La conversion d'un LaboratoryDTO null devrait retourner un Laboratory null");
+    }
+}
