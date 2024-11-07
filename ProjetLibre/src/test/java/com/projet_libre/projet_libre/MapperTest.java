@@ -19,7 +19,7 @@ class MapperTest {
     private LaboratoryDTO laboratoryDTO;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         // Initialisation d'une entité Laboratory et d'un DTO LaboratoryDTO pour les tests
         laboratory = new Laboratory(1L, "Laboratoire ABC", new byte[]{1, 2, 3}, 123456L, Statut.ACTIF, new Date());
         

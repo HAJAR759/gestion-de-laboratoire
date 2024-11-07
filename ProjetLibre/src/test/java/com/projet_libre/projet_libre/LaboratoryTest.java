@@ -10,21 +10,21 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LaboratoryTest {
+class LaboratoryTest {
 
     private Laboratory laboratory;
     private byte[] logo;
     private Date dateActivation;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         logo = new byte[]{1, 2, 3};
         dateActivation = new Date();
         laboratory = new Laboratory(1L, "Lab1", logo, 12345L, Statut.ACTIF, dateActivation);
     }
 
     @Test
-    public void testConstructorWithParameters() {
+    void testConstructorWithParameters() {
         assertEquals(1L, laboratory.getId());
         assertEquals("Lab1", laboratory.getNom());
         assertArrayEquals(logo, laboratory.getLogo());
@@ -34,7 +34,7 @@ public class LaboratoryTest {
     }
 
     @Test
-    public void testSettersAndGetters() {
+    void testSettersAndGetters() {
         laboratory.setId(2L);
         assertEquals(2L, laboratory.getId());
 
@@ -57,7 +57,7 @@ public class LaboratoryTest {
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         String expectedString = "Laboratory [id=1, nom=Lab1, logo=" + Arrays.toString(logo) + 
                                 ", nrc=12345, statut=ACTIF, dateActivation=" + dateActivation + "]";
         assertEquals(expectedString, laboratory.toString());
