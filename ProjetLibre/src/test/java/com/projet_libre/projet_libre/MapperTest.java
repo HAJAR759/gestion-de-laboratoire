@@ -19,6 +19,7 @@ class MapperTest {
     private Laboratory laboratory;
     private LaboratoryDTO laboratoryDTO;
 
+    @BeforeEach
     public void setUp() throws ParseException {
         // Définit une date fixe pour éviter les différences de millisecondes
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
