@@ -59,7 +59,7 @@ public class LaboratoryTest {
     @Test
     public void testToString() {
         String expectedString = "Laboratory [id=1, nom=Lab1, logo=" + Arrays.toString(logo) + 
-                                ", nrc=12345, statut=ACTIVE, dateActivation=" + dateActivation + "]";
+                                ", nrc=12345, statut=ACTIF, dateActivation=" + dateActivation + "]";
         assertEquals(expectedString, laboratory.toString());
     }
 
