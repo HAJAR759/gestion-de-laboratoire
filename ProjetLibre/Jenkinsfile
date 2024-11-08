@@ -68,7 +68,6 @@ pipeline {
   -Dsonar.projectKey=sonar-jenkins \
   -Dsonar.projectName='sonar-jenkins' \
   -Dsonar.host.url=http://localhost:9000 \
-      // sqp_9c709765ba350ac52eb67bfb2cd54159bb418d12
   -Dsonar.token=$SONARQUBE_TOKEN"  
                 }}
             }
