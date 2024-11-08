@@ -39,9 +39,8 @@ pipeline {
                     // Install npm packages
                     bat 'npm install' // Utiliser 'sh' si sous Linux
                     // Run Angular build
-                   bat 'npx --max_old_space_size=8192 npm run build --prod'
-                   
-                 // Optional: run tests
+                    bat 'npm run build --prod' // Assurer un build de production
+                    // Optional: run tests
                     bat 'npm run test -- --watch=false'
                    
                 }
