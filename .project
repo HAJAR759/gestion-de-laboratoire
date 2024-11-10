@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Micro-service</name>
+=======
+	<name>gestion-de-laboratoire</name>
+>>>>>>> 32a6d5e906b2dc7db3294b3a07722476451835f3
 	<comment></comment>
 	<projects>
 	</projects>
