@@ -18,7 +18,7 @@ import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
 import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
 import com.projet_libre.projet_libre.laboratory_service.mapper.Mapper;
 import com.projet_libre.projet_libre.laboratory_service.repository.LaboratoryRepository;
-import com.projet_libre.projet_libre.laboratory_service.service.service_impl.LaboratoryServiceImpI;
+import com.projet_libre.projet_libre.laboratory_service.service.service_impl.LaboratoryServiceImpl;
 import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
 
  class LaboratoryServiceImpTest {
@@ -27,7 +27,7 @@ import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
     private LaboratoryRepository laboratoryRepository;
 
     @InjectMocks
-    private LaboratoryServiceImpI laboratoryService;
+    private LaboratoryServiceImpl laboratoryService;
 
     @BeforeEach
     public void setUp() {

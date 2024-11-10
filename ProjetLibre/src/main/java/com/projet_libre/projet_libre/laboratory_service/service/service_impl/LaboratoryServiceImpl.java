@@ -11,11 +11,15 @@ import com.projet_libre.projet_libre.laboratory_service.service.LaboratoryServic
 import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
 
 @Service
-public class LaboratoryServiceImpI implements LaboratoryService {
+public class LaboratoryServiceImpl implements LaboratoryService {
 
     private LaboratoryRepository laboratoryRepository;
 
-    @Override
+    public LaboratoryServiceImpl(LaboratoryRepository laboratoryRepository) {
+    	this.laboratoryRepository=laboratoryRepository;
+	}
+
+	@Override
     public Laboratory addLaboratory(LaboratoryDTO laboratoryDTO) {
         // Convertir le DTO en entité et l'ajouter à la base de données
         Laboratory laboratory = Mapper.toEntity(laboratoryDTO);
