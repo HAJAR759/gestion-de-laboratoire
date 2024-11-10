@@ -1,7 +1,7 @@
 package com.example.service_utilisateur.controller;
 
 import com.example.service_utilisateur.clients.LaboratoireRestClient;
-import com.example.service_utilisateur.model.Laboratoire;
+import com.example.service_utilisateur.model.Laboratory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ public class controller {
     LaboratoireRestClient laboratoireRestClient;
 
     @GetMapping("labo")
-    public List<Laboratoire> accountList(){
+    public List<Laboratory> accountList(){
         System.out.println("labusr");
         return laboratoireRestClient.findAllLaboratoires();
     }

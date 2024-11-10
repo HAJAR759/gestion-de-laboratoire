@@ -1,6 +1,6 @@
 package com.example.service_utilisateur.entities;
 
-import com.example.service_utilisateur.model.Laboratoire;
+import com.example.service_utilisateur.model.Laboratory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +19,6 @@ public class Utilisateur {
     @Column(length = 100000)
     private byte[] signature;
     @Transient
-    private Laboratoire laboratoire;
+    private Laboratory laboratoire;
     private Long fkIdLaboratoire;
 }
