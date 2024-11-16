@@ -3,11 +3,17 @@ package com.projet_libre.projet_libre.laboratory_service.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.projet_libre.projet_libre.laboratory_service.dto.LaboratoryDTO;
 import com.projet_libre.projet_libre.laboratory_service.entity.Laboratory;
+import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
 import com.projet_libre.projet_libre.laboratory_service.service.LaboratoryService;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,8 +45,46 @@ public class LaboratoryController {
 
  // Ajouter un nouveau laboratoire
     @PostMapping("/ajouterLaboratoire")
-    public ResponseEntity<Laboratory> addLaboratory(@RequestBody LaboratoryDTO laboratoryDTO) {
+    public ResponseEntity<Laboratory> addLaboratory(
+            @RequestParam("nom") String nom,
+            @RequestParam("nrc") Long nrc,
+            @RequestParam("statut") int statutString,
+            @RequestParam("date_activation") String dateActivation,
+            @RequestParam(value = "logo", required = false) MultipartFile logo) throws ParseException {
+
+        // Convertir le MultipartFile en byte[] si le fichier est présent
+        byte[] logoBytes = null;
+        if (logo != null && !logo.isEmpty()) {
+            try {
+                logoBytes = logo.getBytes();
+            } catch (IOException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
+        }
+
+        // Créer le DTO avec les autres données
+        LaboratoryDTO laboratoryDTO = new LaboratoryDTO();
+        laboratoryDTO.setNom(nom);
+        laboratoryDTO.setNrc(nrc);
+     // Exemple dans votre contrôleur
+        Statut statut = Statut.fromInt(statutString); // Convert String to Statut enum
+        laboratoryDTO.setStatut(statut); // Pass the enum value
+     // Assurez-vous que la date est dans un format valide
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Format de date attendu
+        Date date;
+        try {
+            date = dateFormat.parse(dateActivation);
+        } catch (ParseException e) {
+            // Si la date n'est pas valide, retourner une erreur 400 avec message explicatif
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(null); // Vous pouvez également ajouter un message d'erreur dans le corps de la réponse.
+        }
+        laboratoryDTO.setDateActivation(date);
+        laboratoryDTO.setLogo(logoBytes); // Ajout du logo
+
+        // Ajouter le laboratoire dans la base de données
         Laboratory laboratory = laboratoryService.addLaboratory(laboratoryDTO);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
     }
 

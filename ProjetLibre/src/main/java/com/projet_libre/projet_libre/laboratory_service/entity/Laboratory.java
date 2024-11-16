@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 public class Laboratory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // L'ID sera généré automatiquement (auto-incrémenté)
     private long id;
     private String nom;
     @Lob

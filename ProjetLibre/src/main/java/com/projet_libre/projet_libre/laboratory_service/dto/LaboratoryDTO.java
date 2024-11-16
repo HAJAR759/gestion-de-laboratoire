@@ -2,7 +2,6 @@ package com.projet_libre.projet_libre.laboratory_service.dto;
 
 import com.projet_libre.projet_libre.laboratory_service.entity.Statut;
 import java.util.Date;
-
 public class LaboratoryDTO {
 
     private long id;
@@ -24,8 +23,7 @@ public class LaboratoryDTO {
         this.statut = statut;
         this.dateActivation = dateActivation;
     }
-
-    // Getters et Setters
+	// Getters et Setters
     public long getId() {
         return id;
     }
