@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Laboratory {
+public class Laboratoire {
     private long id;
     private String nom;
     @Lob
